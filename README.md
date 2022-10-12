@@ -10,6 +10,7 @@
 - 템플릿에 맞게 공부한 내용을 PR하기
 - 파일명을 지켜주세요! => 1.1주차 스터디.md
 - Commit Message Convention을 지켜주세요! => Study : 1.1주차 스터디
+
 __파일명과 Commit Message Convention은 예시입니다.__
 
 #### ⭐️ 패널티
