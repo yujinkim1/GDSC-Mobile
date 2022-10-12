@@ -11,7 +11,7 @@
 - 파일명을 지켜주세요! => 1.1주차 스터디.md
 - Commit Message Convention을 지켜주세요! => Study : 1.1주차 스터디
 
-__파일명과 Commit Message Convention은 예시입니다.__
+_파일명과 Commit Message Convention은 예시입니다._
 
 #### ⭐️ 패널티
 - GDSC 전체 공지와 동일
