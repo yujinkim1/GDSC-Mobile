@@ -41,3 +41,12 @@ Built-in types가 어려웠는데 00님의 도움으로 이해하게 되었습�
 [1.1주차]
 - dart의 Built-in types에 대해
 - dart의 Functions에 대해
+
+[1.2주차]
+- dart의 연산자에 대해
+- dart의 Control Flow에 대해
+
+
+[2주차]
+- dart의 Generic에 대해
+- dart의 Class에 대해
