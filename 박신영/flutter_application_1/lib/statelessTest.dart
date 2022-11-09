@@ -19,6 +19,7 @@ class statelessTest extends StatelessWidget {
 
 
 
+
 class DogName extends StatelessWidget {
   //이름 변수
   final String name;
