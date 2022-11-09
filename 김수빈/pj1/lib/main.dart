@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pj1/statefulTest.dart';
 import 'package:pj1/statelessTest.dart';
 
 void main() {
@@ -10,13 +11,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text("김수빈"),
-        ),
-        body: Center(
-          child: statelessTest(),
-        ),
-      ),
+          appBar: AppBar(
+            title: const Text("김수빈 어플"),
+          ),
+          body: statefulTest()),
     );
   }
 }
