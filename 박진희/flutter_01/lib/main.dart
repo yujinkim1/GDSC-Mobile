@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_01/stateButton.dart';
 import 'package:flutter_01/statelessTest.dart';
 
 void main() {
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
             // 맨위에 있는 바
             title: const Text('박진희 어플'),
           ),
-          body: Center(child: statelessTest())),
+          body: stateButton()),
     );
   }
 }
