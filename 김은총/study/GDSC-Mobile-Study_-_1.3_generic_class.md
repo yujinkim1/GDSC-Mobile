@@ -82,7 +82,11 @@ class child_class_name extends parent_class_name
 1. `Collection`: 여러 데이터를 모아놓은 데이터 자료구조
 2. `Generic`: 콜렉션이 가지고 있는 여러 데이터들의 타입을 지정해 안정성을 확보하고 재사용성을 향상시키는 기법
 
+<<<<<<< HEAD
+###2.1. **Collection Literals(콜렉션 리터럴)**
+=======
 2.1. **Collection Literals(콜렉션 리터럴)**
+>>>>>>> refs/remotes/origin/main
 > List, Set, Map 선언 시 제네릭을 사용해 타입을 명확하게 명시 할 수 있습니다.
 
 2.1.1. Example(사용 예)
@@ -102,7 +106,11 @@ var profile = <String, String>{
 }
 ```
 
+<<<<<<< HEAD
+###2.2. **Parameter types with constructor**
+=======
 2.2. **Parameter types with constructor**
+>>>>>>> refs/remotes/origin/main
 > 여러 타입 값을 파라미터로 전달받는 생성자를 하나의 함수로 만들 수 있습니다.
 
 2.2.1. Example(사용 예)
@@ -111,7 +119,11 @@ var nameSet = Set<String>.from(names);
 var profile = Map<String, double>();
 ```
 
+<<<<<<< HEAD
+###2.3. **Generic collections and the types they contain**
+=======
 2.3. **Generic collections and the types they contain**
+>>>>>>> refs/remotes/origin/main
 > Dart 언어의 제네릭은 런타임 시 해당 타입의 정보가 사라지지 않습니다.
 
 2.3.1. Example(사용 예)
@@ -121,7 +133,11 @@ names.addAll(["John", "Rui", "Bob", "Clark"]);
 print(names is List<String>); //True
 ```
 
+<<<<<<< HEAD
+###2.4. **Restricting the parameterized type**
+=======
 2.4. **Restricting the parameterized type**
+>>>>>>> refs/remotes/origin/main
 > 제네릭 타입을 적용할 때 해당 클래스의 파라미터 타입을 `extends` 키워드를 통해 제한할 수 있습니다. 예로 java 문법에서는 런타임 시 제네릭 타입이 제거됩니다. 따라서 객체의 여부는 확인할 수 있지만, 타입은 알 수 없습니다. 
 
 2.4.1. Example(사용 예)
@@ -143,7 +159,11 @@ void main() {
 }
 ```
 
+<<<<<<< HEAD
+###2.5. **Using generic methods**
+=======
 2.5. **Using generic methods**
+>>>>>>> refs/remotes/origin/main
 > 클래스 뿐만 아니라 함수와 메소드에도 Restricting이 가능합니다.
 
 2.5.1. Example(사용 예)
