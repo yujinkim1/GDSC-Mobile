@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
+import 'statefullTest.dart';
 
 class statelessTest extends StatelessWidget {
   List<String> names = ['dazy', 'asong', 'bbobby'];
@@ -8,7 +9,17 @@ class statelessTest extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          title: Text('HI'),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => statefulTest()));
+          },
+          backgroundColor: Colors.amber,
+          child: Icon(Icons.arrow_right),
+        ),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
