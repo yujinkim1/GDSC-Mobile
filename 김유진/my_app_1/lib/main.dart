@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './stateButton.dart';
 import './less.dart';
 
 void main() {
@@ -22,8 +23,8 @@ class MyApp extends StatelessWidget {
                     fontSize: 35,
                     fontWeight: FontWeight.w500),
               ),
-              backgroundColor: Colors.deepPurple,
+              backgroundColor: Colors.blueAccent,
             ),
-            body: Center(child: Less())));
+            body: Center(child: stateButton())));
   }
 }
