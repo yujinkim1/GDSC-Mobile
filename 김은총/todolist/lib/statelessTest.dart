@@ -8,7 +8,7 @@ class statelessTest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 		// Center 위젯을 반환
-    return Center(
+    return Container(
 			// Center 자식으로 Column 위젯을 넣음
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

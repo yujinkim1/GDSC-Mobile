@@ -1,22 +1,134 @@
-import 'package:flutter/material.dart';
-import 'package:todolist/stateButton.dart';
-import 'package:todolist/statelessTest.dart';
+// import 'dart:ffi';
 
-void main() {
-  runApp(MyApp());
+import 'package:flutter/material.dart';
+// import 'package:todolist/stateButton.dart';
+// import 'package:todolist/statelessTest.dart';
+
+// void main() {
+//   runApp(MyApp());
+// }
+
+// // This widget is the root of your application.
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: Scaffold(
+//         appBar: AppBar(
+//           title: const Text('김은총 어플'),
+//         ),
+//         body: stateButton()
+//       ),
+//     );
+//   }
+// }
+
+
+
+
+void main() => runApp(MaterialApp(debugShowCheckedModeBanner: false,  //화면위쪽 디버그 표시 없앰
+theme: ThemeData(
+  colorScheme: ColorScheme.fromSwatch(
+    brightness: Brightness.light, //dark/light 모드 설정
+    primarySwatch: Colors.green, //primaryColor 아니면 primarySwatch
+    accentColor: Colors.purple),
+  ),
+  home: MyApp()));
+
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
 }
 
-// This widget is the root of your application.
-class MyApp extends StatelessWidget {
+//액션 넣기(항목 추가, 삭제 등)
+class _MyAppState extends State<MyApp> {
+  List<String> todos = [];
+  String input = "";
+
+  @override
+  // initState의 역할: State를 초기화(API로 호출 등)
+  void initState() {
+    super.initState();
+    todos.add("Item1");
+    todos.add("Item2");
+    todos.add("Item3");
+    todos.add("Item4");
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('김은총 어플'),
+    return Scaffold(
+      appBar: AppBar(
+      title: Text("todoapp"),
+      ),
+
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // showDialog = 모바일의 화면전환 (이전값 기억)
+          showDialog(
+            context: context, 
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text("Add todolist"),
+                content: TextField(onChanged: (String value) {
+                    input = value;
+                  }),
+
+                actions: <Widget> [
+                  TextButton(
+                    onPressed: () {
+                      setState(() {
+                        todos.add(input);
+                        // q.공백을 넣으면 왜 이전값이 입력될까?
+                        // a. TesxtField에 onChanged가 있기 때문. 아래처럼 input값을 지정해주면 된다.
+                        input = "";
+                      });
+                      Navigator.of(context).pop(); //창닫기
+                    },
+                    child: Text("Add"),)
+                ]
+              );
+            }
+          );
+        },
+        child: Icon(
+          Icons.add,
+          color: Colors.white,
         ),
-        body: stateButton()
-          ),
+      ),
+
+      // 아이템 쌓기 stateful 위젯
+      body: ListView.builder(
+        itemCount: todos.length,
+        itemBuilder: (BuildContext context, int index) {
+          return Dismissible(
+            key: Key(todos[index]),
+            child: Card(
+              elevation: 5,
+              margin: EdgeInsets.all(8),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8)
+              ),
+
+              child: ListTile(
+                title: Text(todos[index]),
+                trailing: IconButton(
+                  icon: Icon(Icons.delete, color: Colors.green),
+                  onPressed: () {
+                    setState(() {
+                      todos.removeAt(index);
+                    });
+                  },),
+              ),
+            ));
+        }),
+    );
+  }
+}
+
+
+
+
 
       //   // This is the theme of your application.
       //   //
@@ -30,9 +142,7 @@ class MyApp extends StatelessWidget {
       //   primarySwatch: Colors.blue,
       // ),
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
+
 
 // class statelessTest extends StatelessWidget {
 //   List<String> names = ['bbobby', 'bbibbo', 'apple', 'banana'];
