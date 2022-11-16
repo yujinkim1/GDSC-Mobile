@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 
 class Palette {
   static const primaryColor = Color(0xff5b89fc);
 }
+=======
+import './stateButton.dart';
+import './less.dart';
+>>>>>>> refs/remotes/origin/main
 
 void main() {
   runApp(MaterialApp(
@@ -33,6 +38,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Palette.primaryColor,
@@ -104,5 +110,23 @@ class _MyAppState extends State<MyApp> {
                 ));
           }),
     );
+=======
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
+            appBar: AppBar(
+              toolbarHeight: 100,
+              centerTitle: false,
+              title: const Text(
+                "Labels",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 35,
+                    fontWeight: FontWeight.w500),
+              ),
+              backgroundColor: Colors.blueAccent,
+            ),
+            body: Center(child: stateButton())));
+>>>>>>> refs/remotes/origin/main
   }
 }

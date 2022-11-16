@@ -37,7 +37,7 @@ class statelessTest extends StatelessWidget {
   }
 }
 
-// 반복문 사이에 여백 만들어주기 (글이랑 여백을 포함하는 위젯임) (padding으로 감싸는 코드 써도 됨)
+// 반복문 사이에 여백 만들어주기 (글이랑 여백을 포함하는 위젯임)(padding으로 감싸는 코드 써도 됨)
 // class DogNameBox extends StatelessWidget {
 //   final String name;
 //   final double height;
