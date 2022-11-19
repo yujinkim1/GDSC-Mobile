@@ -19,31 +19,33 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(
           'GDSC-Mobile',
           style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
         ),
+        toolbarHeight: 100,
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
             GestureDetector(
-              child: weeksCotaner(Colors.white, '1주차', 'stateless 위젯'),
+              child: studyContainer(Colors.white, '1주차', 'stateless 위젯'),
               onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => statelessTest()));
               },
             ),
             GestureDetector(
-              child: weeksCotaner(Colors.white, '2주차', 'stateful 위젯'),
+              child: studyContainer(Colors.white, '2주차', 'stateful 위젯'),
               onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => statefulTest()));
               },
             ),
             GestureDetector(
-              child: weeksCotaner(Colors.white, '3주차', 'todoApp'),
+              child: studyContainer(Colors.white, '3주차', 'todoApp'),
               onTap: () {
                 Navigator.push(
                     context, MaterialPageRoute(builder: (context) => Todo()));
@@ -56,7 +58,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-Widget weeksCotaner(color, title, des) {
+Widget studyContainer(color, title, des) {
   //홈 카테고리 위젯 버튼
   return Padding(
     padding: const EdgeInsets.all(10.0),
