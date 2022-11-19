@@ -93,15 +93,16 @@ class _MyAppState extends State<MyApp> {
                     ),
                     actions: <Widget>[
                       // 액션은 위젯으로!
-                      TextButton(
-                          // 텍스트 버튼으로 사용된다.
-                          onPressed: () {
-                            setState(() {
-                              todos.add(input);
-                            });
-                            Navigator.of(context).pop(); // input 입력 후 창 닫히도록
-                          },
-                          child: Text("Add"))
+                      addButton(setAdd) // 버튼 클래스 만들었음
+                      // TextButton(
+                      //     // 텍스트 버튼으로 사용된다.
+                      //     onPressed: () {
+                      //       setState(() {
+                      //         todos.add(input);
+                      //       });
+                      //       Navigator.of(context).pop(); // input 입력 후 창 닫히도록
+                      //     },
+                      //     child: Text("Add"))
                     ]);
               });
         },
@@ -134,17 +135,66 @@ class _MyAppState extends State<MyApp> {
                     child: ListTile(
                       // Flutter에서의 ListView는 ListTile들로 구성 -> 우리는 item을 4개 넣었으니 4개
                       title: Text(todos[index]), // 우리가 작성한 item1~4이고,
-                      trailing: IconButton(
-                          // 끝부분에 삭제하는 아이콘 설정
-                          icon: Icon(Icons.delete, color: Colors.red),
-                          onPressed: () {
-                            // 눌렀을 때 삭제되게!
-                            setState(() {
-                              todos.removeAt(index);
-                            });
-                          }),
+                      trailing:
+                          //DeleteButton(index, setDelete)
+                          IconButton(
+                              // 끝부분에 삭제하는 아이콘 설정
+                              icon: Icon(Icons.delete, color: Colors.red),
+                              onPressed: () {
+                                // 눌렀을 때 삭제되게!
+                                setState(() {
+                                  todos.removeAt(index);
+                                });
+                              }),
                     )));
           }),
+    );
+  }
+
+  void setAdd() {
+    setState(() {
+      todos.add(input);
+    });
+  }
+
+  // void setDelete() {
+  //   setState(() {
+  //     todos.removeAt(index);
+  //   });
+  // }
+}
+
+// 삭제 버튼
+// class DeleteButton extends StatelessWidget {
+//   const DeleteButton(this.index, this.setDelete);
+
+//   final Function() setDelete;
+//   final int index;
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       child: IconButton(
+//         icon: Icon(Icons.delete, color: Colors.red),
+//         onPressed: () => {setDelete()},
+//       ),
+//     );
+//   }
+// }
+
+// add Dialog창 안에 있는 add 버튼
+class addButton extends StatelessWidget {
+  const addButton(this.setAdd);
+
+  final Function() setAdd;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: TextButton(
+        onPressed: () => {setAdd(), Navigator.of(context).pop()},
+        child: Text("Add"),
+      ),
     );
   }
 }
