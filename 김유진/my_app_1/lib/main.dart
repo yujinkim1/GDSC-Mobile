@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
-class Palette {
-  static const primaryColor = Color(0xff5b89fc);
-}
+import './styles/texts.dart';
+import './styles/palette.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -25,10 +23,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    todos.add("Item1");
-    todos.add("Item2");
-    todos.add("Item3");
-    todos.add("Item4");
+    todos.add("더미 아이템");
   }
 
   @override
@@ -38,7 +33,7 @@ class _MyAppState extends State<MyApp> {
         backgroundColor: Palette.primaryColor,
         title: const Text(
           "Todo",
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
+          style: appTitle, //texts.dart
         ),
         centerTitle: false,
         toolbarHeight: 100,
@@ -51,12 +46,21 @@ class _MyAppState extends State<MyApp> {
             context: context,
             builder: (BuildContext context) {
               return AlertDialog(
-                title: Text("Add Something!"),
+                title: Text(
+                  "Add Something!",
+                  style: submitTitle,
+                ),
                 content: TextField(
-                  autocorrect: mounted,
+                  cursorColor: Palette.primaryColor,
                   onChanged: (String value) {
                     input = value;
                   },
+                  decoration: new InputDecoration(
+                      hintText: "할 일을 추가해주세요",
+                      enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Palette.primaryColor)),
+                      focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Palette.primaryColor))),
                 ),
                 actions: <Widget>[
                   TextButton(
@@ -64,7 +68,10 @@ class _MyAppState extends State<MyApp> {
                         todos.add(input);
                         Navigator.of(context).pop();
                       },
-                      child: Text("submit"))
+                      child: Text(
+                        "submit",
+                        style: submitButton,
+                      ))
                 ],
               );
             },
@@ -72,7 +79,7 @@ class _MyAppState extends State<MyApp> {
         },
         child: Icon(
           Icons.add,
-          color: Colors.white,
+          color: Palette.addIconColor,
           size: 45,
         ),
       ),
@@ -82,18 +89,15 @@ class _MyAppState extends State<MyApp> {
             return Dismissible(
                 key: Key(todos[index]),
                 child: Card(
-                  elevation: 4,
-                  margin: EdgeInsets.all(8.0),
+                  elevation: 3,
+                  margin: EdgeInsets.all(10.0),
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.0)),
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
                   child: ListTile(
-                    title: Text(todos[index],
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500,
-                            color: Color(0xff2b2b2b))),
+                    title: Text(todos[index], style: itemName),
                     trailing: IconButton(
-                      icon: Icon(Icons.delete, color: Color(0xffbbbbbbb)),
+                      icon: Icon(Icons.delete, color: Palette.deleteIconColor),
                       onPressed: () {
                         setState(() {
                           todos.removeAt(index);
