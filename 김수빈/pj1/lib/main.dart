@@ -1,16 +1,14 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
-import 'package:pj1/statefulTest.dart';
-import 'package:pj1/statelessTest.dart';
+// import 'package:todolist/stateButton.dart';
+// import 'package:todolist/statelessTest.dart';
 
 void main() => runApp(MaterialApp(
-    debugShowCheckedModeBanner: false, //디버그 배너 없애기
+    debugShowCheckedModeBanner: false,
     theme: ThemeData(
       colorScheme: ColorScheme.fromSwatch(
-        brightness: Brightness.light,
-        accentColor: Colors.purple[100],
-      ),
+          brightness: Brightness.light,
+          //primarySwatch: Colors.blue, //primaryColor or primarySwatch
+          accentColor: Color(0xFFD0BCF2)),
     ),
     home: MyApp()));
 
@@ -35,40 +33,24 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("todoapp"),
+      appBar: AppBar(
+        title: Text("todoapp"),
+        backgroundColor: Color(0xFFD0BCF2),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: onPressedFloatingActionButton,
+        child: Icon(
+          Icons.add,
+          color: Colors.white,
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                      title: Text("Add todoList"),
-                      content: TextField(onChanged: (String value) {
-                        input = value;
-                      }),
-                      actions: <Widget>[
-                        TextButton(
-                            onPressed: () {
-                              setState(() {
-                                todos.add(input);
-                              });
-                              Navigator.of(context).pop();
-                            },
-                            child: Text("Add"))
-                      ]);
-                });
-          },
-          child: Icon(
-            Icons.add,
-            color: Colors.white,
-          ),
-        ),
-        body: ListView.builder(
-            itemCount: todos.length,
-            itemBuilder: (BuildContext context, int index) {
-              return Dismissible(
+      ),
+
+      //body
+
+      body: ListView.builder(
+          itemCount: todos.length,
+          itemBuilder: (BuildContext context, int index) {
+            return Dismissible(
                 key: Key(todos[index]),
                 child: Card(
                   elevation: 5,
@@ -78,7 +60,7 @@ class _MyAppState extends State<MyApp> {
                   child: ListTile(
                     title: Text(todos[index]),
                     trailing: IconButton(
-                      icon: Icon(Icons.delete, color: Colors.yellow),
+                      icon: Icon(Icons.delete, color: Color(0xFFD0BCF2)),
                       onPressed: () {
                         setState(() {
                           todos.removeAt(index);
@@ -86,11 +68,36 @@ class _MyAppState extends State<MyApp> {
                       },
                     ),
                   ),
-                ),
-              );
-            }));
+                ));
+          }),
+    );
+  }
+
+  //FloatingAction버튼 눌렀을 때 메소드
+  void onPressedFloatingActionButton() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+              title: Text("Add todoList"),
+              content: TextField(onChanged: (String value) {
+                input = value;
+              }),
+              actions: <Widget>[
+                TextButton(onPressed: onPressedTextButton, child: Text("Add"))
+              ]);
+        });
+  }
+
+  //텍스트 버튼 눌렀을 때 메소드
+  void onPressedTextButton() {
+    setState(() {
+      todos.add(input);
+    });
+    Navigator.of(context).pop();
   }
 }
+
 
 /*class MyApp extends StatelessWidget {
   @override
