@@ -67,15 +67,7 @@ class _MyAppState extends State<MyApp> {
                         input = value;
                       }),
                       actions: <Widget>[
-                        TextButton(
-                            onPressed: () {
-                              setState(() {
-                                todos.add(input);
-                                input = "";
-                              });
-                              Navigator.of(context).pop(); // 창이 닫히도록
-                            },
-                            child: Text("Add"))
+                        TextButton(onPressed: addTextButton, child: Text("Add"))
                       ]);
                 });
           },
@@ -106,5 +98,13 @@ class _MyAppState extends State<MyApp> {
                     )));
           },
         ));
+  }
+
+  void addTextButton() {
+    setState(() {
+      todos.add(input);
+      input = "";
+    });
+    Navigator.of(context).pop();
   }
 }

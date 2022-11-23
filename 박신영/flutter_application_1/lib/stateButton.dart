@@ -3,10 +3,6 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 class stateButton extends StatefulWidget {
-  
- 
-  
-
   @override
   State<stateButton> createState() => _stateButtonState();
 }

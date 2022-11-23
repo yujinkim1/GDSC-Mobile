@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import '../assets/Palette.dart';
 
 class Todo extends StatefulWidget {
   const Todo({super.key});
@@ -24,11 +25,14 @@ class _TodoState extends State<Todo> {
 
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text('Todos'),
+        toolbarHeight: 100,
+        automaticallyImplyLeading: false,
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Color.fromARGB(255, 160, 114, 225),
+        backgroundColor: Palette.todoPointColor,
         child: Icon(
           Icons.add,
         ),
@@ -64,7 +68,7 @@ class _TodoState extends State<Todo> {
               return Dismissible(
                 key: Key(todos[index]),
                 child: Card(
-                  surfaceTintColor: Colors.white,
+                  surfaceTintColor: Palette.todoBgColor,
                   elevation: 5,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15)),
@@ -72,7 +76,7 @@ class _TodoState extends State<Todo> {
                     title: Text(todos[index]),
                     trailing: IconButton(
                       icon: Icon(Icons.delete),
-                      color: Color.fromARGB(182, 160, 114, 225),
+                      color: Palette.todoPointColor,
                       onPressed: () {
                         setState(() {
                           todos.removeAt(index);

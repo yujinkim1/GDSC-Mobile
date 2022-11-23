@@ -88,7 +88,13 @@ class _MyappState extends State<MyApp> {
                 ),
                 actions: <Widget> [
                   TextButton(
-                    onPressed: onPressed_add,
+                    onPressed: () {
+                      setState(() {
+                        todos.add(input);
+                        input = ""; // 해당 코드를 사용함으로써 입력값이 바뀌지 않았을 때 공백으로 나오게 해준다.
+                      });
+                      Navigator.of(context).pop(); // 창이 닫히도록
+                    },
                     child: Text("Add")
                     )
                 ]
@@ -102,27 +108,7 @@ class _MyappState extends State<MyApp> {
         )
     
       ),
-      body: _buildBody()
-    );
-  }
-
-//과제 : _MyappState 에 몰려있는 코드를 위젯으로 분리하여 보자.//
-// 아직 class로 분리하는 것은 어려운 것 같다.
-
-// #1번 void로 분리하기
-void onPressed_add() {
-
-  setState(() {
-    todos.add(input);
-    input = ""; // 해당 코드를 사용함으로써 입력값이 바뀌지 않았을 때 공백으로 나오게 해준다.
-  });
-  Navigator.of(context).pop(); // 창이 닫히도록
-  }
-
-// #2번 Widget으로 분리하기
-Widget _buildBody() {
-    return Scaffold(
-      body : ListView.builder( // builder를 사용한 이유는 리스트를 동적으로 생산하기 위함.
+      body: ListView.builder( // builder를 사용한 이유는 리스트를 동적으로 생산하기 위함.
         itemCount: todos.length,
         itemBuilder: (BuildContext context, int index) {
           return Dismissible(  // 상태를 가지는 위젯
@@ -147,10 +133,17 @@ Widget _buildBody() {
             ),
           );
         },
-      ),
+      )
     );
-    
   }
-
 }
+//과제 : _MyappState 에 몰려있는 코드를 위젯으로 분리하여 보자.
 
+class MyWidget extends StatelessWidget {
+  const MyWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
