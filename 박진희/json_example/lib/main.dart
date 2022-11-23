@@ -67,6 +67,9 @@ Future<Post> fetchPost() async {
   final response =
       await http.get(Uri.parse('https://jsonplaceholder.typicode.com/posts/1'));
 
+  // post 방식
+  // http.post(Uri.parse("uri"), headers: {"id" : "홍", "pw": "1234"});
+
   if (response.statusCode == 200) {
     print('성공!');
     return Post.fromJson(jsonDecode(response.body));
