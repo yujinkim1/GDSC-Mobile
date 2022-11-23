@@ -102,14 +102,13 @@ class _MyappState extends State<MyApp> {
         )
     
       ),
-      body: _buildBody()
+      body: test()
     );
   }
 
-//과제 : _MyappState 에 몰려있는 코드를 위젯으로 분리하여 보자.//
-// 아직 class로 분리하는 것은 어려운 것 같다.
+//과제 : _MyappState 에 몰려있는 코드를 위젯으로 분리하여 보자.
 
-// #1번 void로 분리하기
+//#1번 void 활용하기
 void onPressed_add() {
 
   setState(() {
@@ -117,10 +116,13 @@ void onPressed_add() {
     input = ""; // 해당 코드를 사용함으로써 입력값이 바뀌지 않았을 때 공백으로 나오게 해준다.
   });
   Navigator.of(context).pop(); // 창이 닫히도록
-  }
+}
 
-// #2번 Widget으로 분리하기
-Widget _buildBody() {
+}
+
+
+class test extends _MyappState with PreferredSizeWidget {
+  Widget _buildBody() {
     return Scaffold(
       body : ListView.builder( // builder를 사용한 이유는 리스트를 동적으로 생산하기 위함.
         itemCount: todos.length,
@@ -151,6 +153,37 @@ Widget _buildBody() {
     );
     
   }
-
+  
+  @override
+  Element createElement() {
+    // TODO: implement createElement
+    throw UnimplementedError();
+  }
+  
+  @override
+  List<DiagnosticsNode> debugDescribeChildren() {
+    // TODO: implement debugDescribeChildren
+    throw UnimplementedError();
+  }
+  
+  @override
+  // TODO: implement key
+  Key? get key => throw UnimplementedError();
+  
+  @override
+  // TODO: implement preferredSize
+  Size get preferredSize => throw UnimplementedError();
+  
+  @override
+  String toStringDeep({String prefixLineOne = '', String? prefixOtherLines, DiagnosticLevel minLevel = DiagnosticLevel.debug}) {
+    // TODO: implement toStringDeep
+    throw UnimplementedError();
+  }
+  
+  @override
+  String toStringShallow({String joiner = ', ', DiagnosticLevel minLevel = DiagnosticLevel.debug}) {
+    // TODO: implement toStringShallow
+    throw UnimplementedError();
+  }
 }
 

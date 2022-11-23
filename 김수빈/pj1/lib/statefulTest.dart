@@ -61,3 +61,36 @@ class ThirdButton extends StatelessWidget {
     );
   }
 }
+/*class IndexCard extends StatelessWidget {
+  const IndexCard(this.todos, this.index);
+
+  final int index;
+  final List<String> todos;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        child: Card(
+      elevation: 5,
+      margin: EdgeInsets.all(8),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      child: ListTile(
+        title: Text(todos[index]),
+        trailing: IconButton(
+          icon: Icon(Icons.delete, color: Color(0xFFD0BCF2)),
+          onPressed: () {
+            //setState(() {
+            todos.removeAt(index); //눌렀을 때 삭제
+            //});
+          },
+        ),
+      ),
+    ));
+  }*/
+
+  /*void onPressedIconButton(){
+    setState(() {
+      todos.removeAt(index); //눌렀을 때 삭제
+    });
+  }
+}*/
