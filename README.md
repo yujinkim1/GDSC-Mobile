@@ -58,4 +58,7 @@ Built-in types가 어려웠는데 00님의 도움으로 이해하게 되었습�
 - todoApp 실습02 (stateful Widget)
 
 [5주차]
-- todoApp 실습03
+- todoApp 실습03 (Customize)
+
+[6주차]
+- json API 실습
